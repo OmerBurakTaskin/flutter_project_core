@@ -82,8 +82,7 @@ AppLocalizations.of(context)!.helloWorld
 ## 🛠️ Extending the Core
 
 - Add features in `lib/features/`.
-- Register new services in `lib/di/`.
-- Create providers in `lib/providers/` for Riverpod integration.
+- Register new services in `lib/core/di/`.
 
 ---
 
