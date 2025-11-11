@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:flutter/material.dart';
 
 extension GenerateListExtension on num {
   List<T> to<T extends num>(num to, {num? step}) {
@@ -17,5 +18,15 @@ extension GenerateListExtension on num {
       return list.reversed.toList();
     }
     return list;
+  }
+}
+
+extension SizedBoxExtension on num {
+  Widget verticalSizedBox() {
+    return SizedBox(height: toDouble());
+  }
+
+  Widget horizontalSizedBox() {
+    return SizedBox(width: toDouble());
   }
 }

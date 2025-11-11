@@ -1,94 +1,37 @@
 name: flutter_project_core
-description: "A new Flutter project."
-
-publish_to: 'none' 
-
-version: 1.0.0+1
+description: "Flutter core package made by AXII Software (Ömer Burak Taşkın)"
+version: 0.0.1
 
 environment:
-  sdk: ^3.6.1
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
+
 
 dependencies:
   flutter:
     sdk: flutter
-  
+
   #network
-  dio: ^5.9.0
   pretty_dio_logger: ^1.4.0
-  internet_connection_checker_plus: ^2.7.2
+  dio: ^5.9.0
 
-  #di
-  get_it: ^8.2.0
+  #local
+  shared_preferences: ^2.5.3
 
-  #state management
-  riverpod: ^2.6.1
-  flutter_riverpod: ^2.6.1
+  #localization
+  intl: ^0.20.2
+  flutter_multi_formatter: ^2.13.10
+
 
   #ui
-  auto_size_text: ^3.0.0
-  flutter_svg: ^2.2.0
-  cached_network_image: ^3.4.1
-
-  #localizations
-  flutter_localizations:
-    sdk: flutter
-  intl: ^0.20.2
-
-  #firebase
-  firebase_core: ^4.0.0
-  firebase_analytics: ^12.0.0
-  firebase_crashlytics: ^5.0.0
+  shimmer: ^3.0.0
 
 
-
-  cupertino_icons: ^1.0.8
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  flutter_launcher_icons: ^0.14.3
   flutter_lints: ^5.0.0
-  build_runner:
-  flutter_gen_runner:
 
-  
-
-flutter:
-  generate: true 
-  uses-material-design: true
-
-  assets:
-    - assets/icons/img/
-    - assets/icons/svg/
-
-  
-  
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   

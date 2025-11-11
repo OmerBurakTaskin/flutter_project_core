@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-
-import '../routes/app_routes.dart';
+import 'package:flutter_project_core/core/config/context_config.dart';
 
 extension IndicatorExtension on Future {
-  Future<T> withIndicator<T>({String? message}) async {
+  Future<T> withIndicator<T>(Widget loadingDialog) async {
     final context = navigatorKey.currentContext!;
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (_) => Center(
-        child: Placeholder(),
-      ),
+      builder: (_) => Center(child: loadingDialog),
     );
 
     try {

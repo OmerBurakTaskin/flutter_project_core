@@ -17,19 +17,62 @@ extension ContextExtension on BuildContext {
 
   Color get primaryContainer => ColorScheme.of(this).primaryContainer;
 
-  //AppLocalizations get tr => AppLocalizations.of(this)!;
+  Future<void> pushNamed<T>(String route, {T? extra}) async =>
+      Navigator.of(this).pushNamed(route, arguments: extra);
 
-  Locale get currentLocale => Localizations.localeOf(this);
+  Future<void> push<T>(Widget view, {T? extra}) async =>
+      Navigator.of(this).push(
+        MaterialPageRoute(
+          builder: (_) => view,
+          settings: RouteSettings(arguments: extra),
+        ),
+      );
 
-  Future<void> toNamed(String routeName) async =>
-      await Navigator.pushNamed(this, routeName);
+  void pop<T extends Object?>([T? result]) => Navigator.of(this).pop(result);
 
-  Future<void> toNamedReplacement(String routeName) async =>
-      await Navigator.pushReplacementNamed(this, routeName);
+  Future<void> pushReplacementNamed<T>(String route, {T? extra}) async =>
+      Navigator.of(this).pushReplacementNamed(route, arguments: extra);
 
-  void pop() => Navigator.pop(this);
+  Future<void> pushUntilNamed<T>(String route, {T? extra}) async =>
+      Navigator.of(
+        this,
+      ).pushNamedAndRemoveUntil(route, (route) => false, arguments: extra);
 
-  Future<void> toNamedAndRemoveUntil(String routeName) async =>
-      await Navigator.pushNamedAndRemoveUntil(
-          this, routeName, (route) => false);
+  Future noAnimationPushReplacemen<T>(Widget view, {T? extra}) async {
+    return Navigator.of(this).push(
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => view,
+        transitionDuration: Duration.zero,
+        reverseTransitionDuration: Duration.zero,
+      ),
+    );
+  }
+
+  T? getArguments<T>() => ModalRoute.of(this)?.settings.arguments as T?;
+
+  Future<bool?> showAlertDialog({
+    String? title,
+    String? content,
+    String cancelText = 'İptal',
+    String confirmText = 'Onayla',
+    bool isDestructiveAction = false,
+  }) async {
+    return await showDialog<bool>(
+      context: this,
+      builder: (context) => AlertDialog(
+        title: title != null ? Text(title) : null,
+        content: content != null ? Text(content) : null,
+        actions: [
+          TextButton(onPressed: () => pop(false), child: Text(cancelText)),
+          TextButton(
+            onPressed: () => pop(true),
+            style: isDestructiveAction
+                ? TextButton.styleFrom(foregroundColor: colorScheme.error)
+                : null,
+            child: Text(confirmText),
+          ),
+        ],
+      ),
+    );
+  }
 }
