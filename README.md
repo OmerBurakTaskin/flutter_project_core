@@ -1,39 +1,54 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Flutter Project Core
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+Shared core layer for Flutter applications.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+This package contains reusable building blocks that are shared across multiple apps:
+networking, extensions, common widgets, models, theme utilities and helpers.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Designed to keep feature modules clean and reduce duplication.
 
-## Features
+---
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## 📦 Contents
 
-## Getting started
+### Data
+- `local/`
+  - Local database services
+- `remote/`
+  - Network service abstractions
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+### Extensions
+- String, number, future, widget and context extensions
+- API response helpers
 
-## Usage
+### Models
+- Common response models
+- Enum helpers
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+### Network
+- Auth interceptor
+- Network-related utilities
 
-```dart
-const like = 'sample';
-```
+### Theme
+- Shared text styles
 
-## Additional information
+### Utils
+- Helper and utility methods
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+### Widgets
+- Reusable UI components
+- Bottom sheet selections
+- Custom buttons, scaffolds, avatars, images, phone field, etc.
+
+---
+
+## 🚀 Usage
+
+Add the dependency:
+
+```yaml
+dependencies:
+  my_core:
+    git:
+      url: https://github.com/aga/my_core.git
+      ref: main (or selected version tag, e.g. v0.0.1)
