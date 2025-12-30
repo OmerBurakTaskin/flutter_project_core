@@ -48,7 +48,7 @@ Add the dependency:
 
 ```yaml
 dependencies:
-  my_core:
+  axii_core:
     git:
       url: https://github.com/aga/my_core.git
       ref: main (or selected version tag, e.g. v0.0.1)
