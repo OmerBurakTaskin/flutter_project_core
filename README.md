@@ -48,7 +48,7 @@ Add the dependency:
 
 ```yaml
 dependencies:
-  axii_core:
+  flutter_project_core:
     git:
       url: https://github.com/OmerBurakTaskin/flutter_project_core.git
       ref: main (or selected version tag, e.g. v0.0.1)
