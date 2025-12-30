@@ -50,5 +50,5 @@ Add the dependency:
 dependencies:
   axii_core:
     git:
-      url: https://github.com/aga/my_core.git
+      url: https://github.com/OmerBurakTaskin/flutter_project_core.git
       ref: main (or selected version tag, e.g. v0.0.1)
