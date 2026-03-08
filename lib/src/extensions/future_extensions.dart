@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_core/src/config/context_config.dart';
 
-extension IndicatorExtension on Future {
-  Future<T> withIndicator<T>(Widget loadingDialog) async {
+extension IndicatorExtension<T> on Future<T> {
+  Future<T> withIndicator(Widget loadingDialog) async {
     final context = navigatorKey.currentContext!;
     showDialog(
       context: context,
@@ -17,7 +17,7 @@ extension IndicatorExtension on Future {
         Navigator.of(context, rootNavigator: true).pop();
       }
 
-      return result as T;
+      return result;
     } catch (e) {
       if (context.mounted) {
         Navigator.of(context, rootNavigator: true).pop();

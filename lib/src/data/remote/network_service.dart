@@ -1,28 +1,36 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_project_core/src/config/api_config.dart';
 import 'package:flutter_project_core/src/models/api_response.dart';
-import 'package:flutter_project_core/src/network/auth_interceptor.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class NetworkService {
   final String baseUrl;
   final Dio dio;
+  final List<Interceptor> interceptors;
 
-  NetworkService({required this.baseUrl})
-    : dio = Dio(
-        BaseOptions(
-          baseUrl: baseUrl,
-          connectTimeout: const Duration(seconds: 25),
-          receiveTimeout: const Duration(seconds: 25),
-          responseType: ResponseType.json,
-          validateStatus: (status) {
-            return status != null && status < 400;
-          },
-        ),
-      ) {
-    dio.interceptors.add(AuthInterceptor(dio));
-    dio.interceptors.add(PrettyDioLogger());
+  NetworkService(
+      {required this.baseUrl,
+      bool logRequests = kDebugMode,
+      this.interceptors = const []})
+      : dio = Dio(
+          BaseOptions(
+            baseUrl: baseUrl,
+            connectTimeout: const Duration(seconds: 25),
+            receiveTimeout: const Duration(seconds: 25),
+            responseType: ResponseType.json,
+            validateStatus: (status) {
+              return status != null && status < 400;
+            },
+          ),
+        ) {
+    for (var interceptor in interceptors) {
+      dio.interceptors.add(interceptor);
+    }
+    if (logRequests) {
+      dio.interceptors.add(PrettyDioLogger());
+    }
   }
 
   Future<ApiResponse<I>> get<I>({
