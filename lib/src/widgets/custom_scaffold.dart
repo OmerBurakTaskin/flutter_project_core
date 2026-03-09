@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_core/src/extensions/context_extensions.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CustomScaffold extends StatelessWidget {
   const CustomScaffold({
@@ -10,6 +11,7 @@ class CustomScaffold extends StatelessWidget {
     this.isScrollable = false,
     this.resizeToAvoidBottomInset = false,
     this.backgroundColor,
+    this.provider,
     this.isCentered,
     this.appBar,
     this.bottomNavigationBar,
@@ -18,6 +20,7 @@ class CustomScaffold extends StatelessWidget {
   });
 
   final Widget body;
+  final StateNotifierProvider? provider;
 
   final double horizontalPadding;
   final double verticalPadding;

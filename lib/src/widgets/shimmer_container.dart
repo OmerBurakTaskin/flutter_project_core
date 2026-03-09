@@ -11,6 +11,7 @@ class ShimmerWrapper extends StatelessWidget {
     this.color = Colors.grey,
     this.borderRadius = 16,
     this.customShimmer,
+    this.spacing = 8,
   });
   final double width;
   final double height;
@@ -19,6 +20,7 @@ class ShimmerWrapper extends StatelessWidget {
   final bool isLoading;
   final Widget Function() builder;
   final List<Widget>? customShimmer;
+  final double spacing;
   @override
   Widget build(BuildContext context) {
     return !isLoading
@@ -29,6 +31,7 @@ class ShimmerWrapper extends StatelessWidget {
                 height: height,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  spacing: spacing,
                   children: customShimmer!
                       .map(
                         (s) => Shimmer.fromColors(

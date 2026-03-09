@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_core/src/extensions/context_extensions.dart';
-import 'package:flutter_project_core/src/theme/app_text_styles.dart';
+import 'package:flutter_project_core/axii_core.dart';
 
 class CustomTextField extends StatefulWidget {
   const CustomTextField({
@@ -22,7 +21,9 @@ class CustomTextField extends StatefulWidget {
     this.maxLength,
     this.minLines = 1,
     this.afterValidation,
+    this.onTap,
     this.isEnabled = true,
+    this.readOnly = false,
     this.autovalidateMode = AutovalidateMode.onUserInteraction,
   });
   final TextEditingController controller;
@@ -44,6 +45,8 @@ class CustomTextField extends StatefulWidget {
   final int minLines;
   final AutovalidateMode? autovalidateMode;
   final Function(bool?)? afterValidation;
+  final Function()? onTap;
+  final bool readOnly;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -67,6 +70,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         if (widget.label != null) Text(widget.label!),
         TextFormField(
           controller: widget.controller,
+          onTap: widget.onTap,
           autovalidateMode: widget.autovalidateMode,
           onChanged: widget.onChanged,
           keyboardType: widget.keyboardType,
@@ -77,6 +81,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           maxLines: widget.maxLines ?? (widget.obscureText ? 1 : null),
           focusNode: widget.focusNode,
           maxLength: widget.maxLength,
+          readOnly: widget.readOnly,
           enabled: widget.isEnabled,
           onFieldSubmitted: (value) => widget.onFieldSubmitted?.call(),
           decoration: InputDecoration(
