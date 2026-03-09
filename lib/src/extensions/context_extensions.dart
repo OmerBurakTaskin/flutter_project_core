@@ -17,37 +17,6 @@ extension ContextExtension on BuildContext {
 
   Color get primaryContainer => ColorScheme.of(this).primaryContainer;
 
-  Future<void> pushNamed<T>(String route, {T? extra}) async =>
-      Navigator.of(this).pushNamed(route, arguments: extra);
-
-  Future<void> push<T>(Widget view, {T? extra}) async =>
-      Navigator.of(this).push(
-        MaterialPageRoute(
-          builder: (_) => view,
-          settings: RouteSettings(arguments: extra),
-        ),
-      );
-
-  void pop<T extends Object?>([T? result]) => Navigator.of(this).pop(result);
-
-  Future<void> pushReplacementNamed<T>(String route, {T? extra}) async =>
-      Navigator.of(this).pushReplacementNamed(route, arguments: extra);
-
-  Future<void> pushUntilNamed<T>(String route, {T? extra}) async =>
-      Navigator.of(
-        this,
-      ).pushNamedAndRemoveUntil(route, (route) => false, arguments: extra);
-
-  Future noAnimationPushReplacemen<T>(Widget view, {T? extra}) async {
-    return Navigator.of(this).push(
-      PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => view,
-        transitionDuration: Duration.zero,
-        reverseTransitionDuration: Duration.zero,
-      ),
-    );
-  }
-
   T? getArguments<T>() => ModalRoute.of(this)?.settings.arguments as T?;
 
   Future<bool?> showAlertDialog({
@@ -63,9 +32,11 @@ extension ContextExtension on BuildContext {
         title: title != null ? Text(title) : null,
         content: content != null ? Text(content) : null,
         actions: [
-          TextButton(onPressed: () => pop(false), child: Text(cancelText)),
           TextButton(
-            onPressed: () => pop(true),
+              onPressed: () => Navigator.of(context).pop(false),
+              child: Text(cancelText)),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(true),
             style: isDestructiveAction
                 ? TextButton.styleFrom(foregroundColor: colorScheme.error)
                 : null,
