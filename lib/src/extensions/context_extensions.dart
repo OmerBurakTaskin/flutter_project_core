@@ -11,13 +11,34 @@ extension ContextExtension on BuildContext {
 
   NavigatorState get navigator => Navigator.of(this);
 
+  Locale get locale => Localizations.localeOf(this);
+
   EdgeInsets get viewInsets => MediaQuery.viewInsetsOf(this);
 
   EdgeInsets get viewPadding => MediaQuery.viewPaddingOf(this);
 
-  Color get primaryContainer => ColorScheme.of(this).primaryContainer;
+  double get totalAppBarHeight {
+    final appBarHeight = AppBar().preferredSize.height;
+    final topPadding = MediaQuery.paddingOf(this).top;
+    return appBarHeight + topPadding;
+  }
 
-  T? getArguments<T>() => ModalRoute.of(this)?.settings.arguments as T?;
+  void unfocusKeyboard() {
+    final currentFocus = FocusScope.of(this);
+    if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+      currentFocus.focusedChild!.unfocus();
+    }
+  }
+
+  /// Alternatif klavye kapatma metodu
+  void hideKeyboard() {
+    FocusScope.of(this).unfocus();
+  }
+
+  /// Focus'ı belirli bir node'a verir
+  void requestFocus(FocusNode focusNode) {
+    FocusScope.of(this).requestFocus(focusNode);
+  }
 
   Future<bool?> showAlertDialog({
     String? title,
@@ -33,10 +54,10 @@ extension ContextExtension on BuildContext {
         content: content != null ? Text(content) : null,
         actions: [
           TextButton(
-              onPressed: () => Navigator.of(context).pop(false),
+              onPressed: () => Navigator.of(this).pop(false),
               child: Text(cancelText)),
           TextButton(
-            onPressed: () => Navigator.of(context).pop(true),
+            onPressed: () => Navigator.of(this).pop(true),
             style: isDestructiveAction
                 ? TextButton.styleFrom(foregroundColor: colorScheme.error)
                 : null,

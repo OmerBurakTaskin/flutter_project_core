@@ -42,7 +42,7 @@ class ApiResponse<T> {
     required R? Function(T data) onSuccess,
     required R? Function(String error) onError,
   }) {
-    if (data != null) {
+    if (isSuccess) {
       return onSuccess(data as T);
     } else {
       return onError(error ?? "Unknown error occured");

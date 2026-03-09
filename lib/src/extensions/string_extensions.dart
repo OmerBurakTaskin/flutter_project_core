@@ -17,7 +17,6 @@ extension StringFormatting on String {
     if (isEmpty) return this;
     final words = split(' ');
     if (words.length > 1) {
-      // Her bir kelimeyi ayrı ayrı işle ve sonra birleştir
       return words
           .map(
             (word) =>

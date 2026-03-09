@@ -80,3 +80,22 @@ extension IconExtension on Icon {
     );
   }
 }
+
+extension ListViewExtension on BoxScrollView {
+  Widget whenEmpty({required Widget emptyWidget, required bool isEmpty}) {
+    if (isEmpty) {
+      return emptyWidget;
+    }
+    return this;
+  }
+}
+
+extension LoadingExtension on Widget {
+  Widget whenLoading({required bool isLoading, Widget? loadingWidget}) {
+    if (isLoading) {
+      return loadingWidget ??
+          Center(child: CircularProgressIndicator.adaptive());
+    }
+    return this;
+  }
+}

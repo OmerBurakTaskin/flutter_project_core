@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_core/src/config/context_config.dart';
 
+
 extension IndicatorExtension<T> on Future<T> {
+  
   Future<T> withIndicator(Widget loadingDialog) async {
     final context = navigatorKey.currentContext!;
     showDialog(

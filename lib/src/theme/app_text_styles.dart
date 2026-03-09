@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TextStyles {
-  static const Color _defaultColor = Color(0xff111827);
+  static const Color _defaultColor = Color(0xff0F172A);
 
   // Regular styles
   static const TextStyle regular10 = TextStyle(
@@ -167,6 +167,70 @@ class TextStyles {
   static const TextStyle bold32 = TextStyle(
     fontSize: 32,
     fontWeight: FontWeight.w700,
+    color: _defaultColor,
+  );
+
+  // ExtraBold styles (w800)
+  static const TextStyle extraBold12 = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w800,
+    color: _defaultColor,
+  );
+  static const TextStyle extraBold14 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w800,
+    color: _defaultColor,
+  );
+  static const TextStyle extraBold16 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w800,
+    color: _defaultColor,
+  );
+  static const TextStyle extraBold18 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w800,
+    color: _defaultColor,
+  );
+  static const TextStyle extraBold20 = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w800,
+    color: _defaultColor,
+  );
+  static const TextStyle extraBold24 = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w800,
+    color: _defaultColor,
+  );
+
+  // Black styles (w900)
+  static const TextStyle black12 = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w900,
+    color: _defaultColor,
+  );
+  static const TextStyle black14 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w900,
+    color: _defaultColor,
+  );
+  static const TextStyle black16 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w900,
+    color: _defaultColor,
+  );
+  static const TextStyle black18 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w900,
+    color: _defaultColor,
+  );
+  static const TextStyle black20 = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w900,
+    color: _defaultColor,
+  );
+  static const TextStyle black24 = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w900,
     color: _defaultColor,
   );
 }

@@ -15,6 +15,7 @@ class CustomButton extends StatelessWidget {
     this.borderShape,
     this.isActive = true,
     this.borderRadius,
+    this.alignment = Alignment.center,
   });
 
   final Function? onPressed;
@@ -28,6 +29,7 @@ class CustomButton extends StatelessWidget {
   final BorderSide? borderSide;
   final EdgeInsetsGeometry? padding;
   final OutlinedBorder? borderShape;
+  final Alignment alignment;
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +41,7 @@ class CustomButton extends StatelessWidget {
         elevation: elevation,
         padding: padding,
         minimumSize: Size(1, 1),
-        shape:
-            borderShape ??
+        shape: borderShape ??
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(borderRadius ?? 8),
               side: borderSide ?? BorderSide.none,
