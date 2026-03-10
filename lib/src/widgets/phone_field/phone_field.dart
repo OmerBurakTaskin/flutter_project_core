@@ -61,10 +61,7 @@ class PhoneField extends StatelessWidget {
                     controller: phoneFieldController.phoneController,
                     keyboardType: TextInputType.phone,
                     maxLength: 10,
-                    onChanged: (value){
-                      onPhoneChanged?.call(value);
-                      context.unfocusKeyboard();
-                    },
+                    onChanged: onPhoneChanged,
                     decoration: InputDecoration(counterText: ""),
                     inputFormatters: [
                       // PhoneInputFormatter(
