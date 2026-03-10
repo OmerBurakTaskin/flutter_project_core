@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_core/src/extensions/context_extensions.dart';
 import 'package:flutter_project_core/src/extensions/widget_extensions.dart';
 import 'package:flutter_project_core/src/widgets/bottomsheet_selection/selection_bottom_sheet.dart';
 
@@ -42,13 +43,16 @@ class CustomSelectionWidget<T> extends StatelessWidget {
           ),
         ).asGestureDetector(
           onTap: isActive == true
-              ? () => showSelectionBottomSheet<T>(
+              ? () {
+                  context.hideKeyboard();
+                  showSelectionBottomSheet<T>(
                     context: context,
                     items: items,
                     onSelected: onSelected,
                     selectedItem: selectedItem,
                     title: bottomSheetTitle,
-                  )
+                  );
+                }
               : () {},
         ),
       ],
