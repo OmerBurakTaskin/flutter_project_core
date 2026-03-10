@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project_core/src/extensions/widget_extensions.dart';
 import 'package:flutter_project_core/src/widgets/bottomsheet_selection/selection_bottom_sheet.dart';
 
-class CreateSaloonSelectionWidget<T> extends StatelessWidget {
-  const CreateSaloonSelectionWidget({
+class CustomSelectionWidget<T> extends StatelessWidget {
+  const CustomSelectionWidget({
     super.key,
     required this.label,
     required this.onSelected,
