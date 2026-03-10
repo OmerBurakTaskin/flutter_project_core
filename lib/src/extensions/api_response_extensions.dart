@@ -21,3 +21,13 @@ extension ApiResponseExtension on ApiResponse<Map<String, dynamic>> {
     }
   }
 }
+
+extension ApiResponseErrorExtension<T> on ApiResponse<T> {
+  T getOrError() {
+    if (data != null) {
+      return data!;
+    } else {
+      throw Exception(error ?? "Unknown error");
+    }
+  }
+}
