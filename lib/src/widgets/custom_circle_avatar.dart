@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_core/src/extensions/context_extensions.dart';
-import 'package:flutter_project_core/src/theme/app_text_styles.dart';
+import 'package:flutter_project_core/axii_core.dart';
 
 class CustomCircleAvatar extends StatelessWidget {
   const CustomCircleAvatar({
@@ -17,7 +16,9 @@ class CustomCircleAvatar extends StatelessWidget {
     return CircleAvatar(
       radius: radius,
       backgroundColor: context.colorScheme.primary.withAlpha(200),
-      foregroundImage: NetworkImage(profilePictureUrl ?? ""),
+      foregroundImage: profilePictureUrl != null
+          ? NetworkImage(profilePictureUrl!)
+          : null,
       child: name != null
           ? Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -27,7 +28,7 @@ class CustomCircleAvatar extends StatelessWidget {
                     (name) => Text(
                       name[0].toUpperCase(),
                       style: TextStyles.bold28.copyWith(
-                        fontSize: radius / 1.5,
+                        fontSize: radius / 1.6,
                         color: context.colorScheme.onPrimary,
                       ),
                     ),
