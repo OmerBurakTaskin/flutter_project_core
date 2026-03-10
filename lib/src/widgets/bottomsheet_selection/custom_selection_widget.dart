@@ -44,7 +44,7 @@ class CustomSelectionWidget<T> extends StatelessWidget {
         ).asGestureDetector(
           onTap: isActive == true
               ? () {
-                  context.hideKeyboard();
+                  context.unfocusKeyboard();
                   showSelectionBottomSheet<T>(
                     context: context,
                     items: items,
