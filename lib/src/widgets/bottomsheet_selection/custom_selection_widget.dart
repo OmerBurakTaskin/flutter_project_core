@@ -17,6 +17,7 @@ class CustomSelectionWidget<T> extends StatelessWidget {
       this.customArrow,
       this.borderColor,
       this.backgroundColor,
+      this.textStyle,
       this.width});
   final String? label;
   final String? hintText;
@@ -30,6 +31,7 @@ class CustomSelectionWidget<T> extends StatelessWidget {
   final double borderRadius;
   final Widget? customArrow;
   final Color? backgroundColor;
+  final TextStyle? textStyle;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -40,16 +42,22 @@ class CustomSelectionWidget<T> extends StatelessWidget {
         Container(
           width: width,
           height: 48,
-          padding: EdgeInsets.symmetric(horizontal:borderRadius),
+          padding: EdgeInsets.symmetric(horizontal: 16),
           decoration: BoxDecoration(
             color: this.backgroundColor ?? Colors.grey[50],
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(borderRadius),
             border: Border.all(color: borderColor ?? Colors.grey[300]!),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              if (hintText != null) Text(hintText!) else SizedBox.shrink(),
+              if (hintText != null)
+                Text(
+                  hintText!,
+                  style: textStyle,
+                )
+              else
+                SizedBox.shrink(),
               customArrow ?? Icon(Icons.arrow_drop_down_rounded)
             ],
           ),
