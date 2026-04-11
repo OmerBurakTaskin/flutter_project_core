@@ -5,20 +5,21 @@ import 'package:flutter_project_core/src/extensions/context_extensions.dart';
 import 'package:flutter_project_core/src/widgets/phone_field/phone_field_controller.dart';
 
 class PhoneField extends StatelessWidget {
-  const PhoneField({
-    super.key,
-    this.onPhoneChanged,
-    required this.phoneFieldController,
-    this.label = "Telefon",
-    this.validator,
-    this.focusNode,
-  });
+  const PhoneField(
+      {super.key,
+      this.onPhoneChanged,
+      required this.phoneFieldController,
+      this.label = "Telefon",
+      this.validator,
+      this.focusNode,
+      this.hintText});
 
   final PhoneFieldController phoneFieldController;
   final void Function(String)? onPhoneChanged;
   final String? Function(String?)? validator;
   final String label;
   final FocusNode? focusNode;
+  final String? hintText;
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +63,8 @@ class PhoneField extends StatelessWidget {
                     keyboardType: TextInputType.phone,
                     maxLength: 10,
                     onChanged: onPhoneChanged,
-                    decoration: InputDecoration(counterText: ""),
+                    decoration:
+                        InputDecoration(hintText: hintText, counterText: ""),
                     inputFormatters: [
                       // PhoneInputFormatter(
                       //   defaultCountryCode: value?.countryCode,
