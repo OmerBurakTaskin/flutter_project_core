@@ -7,3 +7,4 @@ export 'utils/index.dart';
 export 'widgets/index.dart';
 export 'widgets/core_stful_consumer_widget.dart';
 export 'widgets/core_stful_widget.dart';
+export 'services/index.dart';
