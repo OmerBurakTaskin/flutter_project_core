@@ -12,6 +12,7 @@ class PhoneField extends StatelessWidget {
       this.label = "Telefon",
       this.validator,
       this.focusNode,
+      this.countryIsoCodes = const ["TR"],
       this.hintText});
 
   final PhoneFieldController phoneFieldController;
@@ -20,6 +21,7 @@ class PhoneField extends StatelessWidget {
   final String label;
   final FocusNode? focusNode;
   final String? hintText;
+  final List<String> countryIsoCodes;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,7 @@ class PhoneField extends StatelessWidget {
                       focusedBorder: InputBorder.none,
                     ),
                     filter: PhoneCodes.findCountryDatasByCountryCodes(
-                      countryIsoCodes: ["TR"],
+                      countryIsoCodes: countryIsoCodes,
                     ),
                     onCountrySelected: _handleCountryChange,
                     dropdownColor: context.colorScheme.surface,
