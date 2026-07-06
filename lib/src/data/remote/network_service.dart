@@ -9,10 +9,12 @@ class NetworkService {
   final String baseUrl;
   final Dio dio;
   final List<Interceptor> interceptors;
+  final String Function(Map<String, dynamic>)? errorParser;
 
   NetworkService(
       {required this.baseUrl,
       bool logRequests = kDebugMode,
+      this.errorParser,
       this.interceptors = const []})
       : dio = Dio(
           BaseOptions(
@@ -57,7 +59,7 @@ class NetworkService {
     } on DioException catch (e) {
       final statusCode = e.response?.statusCode;
       return ApiResponse.failure(
-        e.response?.data["message"] ?? "Error: ${e.message ?? "Unknown error"}",
+        errorParser?.call(e.response?.data) ?? "Unkown Error",
         dioError: e,
         statusCode: statusCode,
       );
@@ -84,8 +86,7 @@ class NetworkService {
     } on DioException catch (e) {
       final statusCode = e.response?.statusCode;
       return ApiResponse.failure(
-        e.response?.data?["message"] ??
-            "Error: ${e.message ?? "Unknown error"}",
+        errorParser?.call(e.response?.data) ?? "Unkown Error",
         dioError: e,
         statusCode: statusCode,
       );
@@ -112,7 +113,7 @@ class NetworkService {
     } on DioException catch (e) {
       final statusCode = e.response?.statusCode;
       return ApiResponse.failure(
-        e.response?.data["message"] ?? "Error: ${e.message ?? "Unknown error"}",
+        errorParser?.call(e.response?.data) ?? "Unkown Error",
         dioError: e,
         statusCode: statusCode,
       );
@@ -139,7 +140,7 @@ class NetworkService {
     } on DioException catch (e) {
       final statusCode = e.response?.statusCode;
       return ApiResponse.failure(
-        e.response?.data["message"] ?? "Error: ${e.message ?? "Unknown error"}",
+        errorParser?.call(e.response?.data) ?? "Unkown Error",
         dioError: e,
         statusCode: statusCode,
       );
@@ -165,7 +166,7 @@ class NetworkService {
     } on DioException catch (e) {
       final statusCode = e.response?.statusCode;
       return ApiResponse.failure(
-        e.response?.data["message"] ?? "Error: ${e.message ?? "Unknown error"}",
+        errorParser?.call(e.response?.data) ?? "Unkown Error",
         dioError: e,
         statusCode: statusCode,
       );
@@ -206,8 +207,7 @@ class NetworkService {
     } on DioException catch (e) {
       final statusCode = e.response?.statusCode;
       return ApiResponse.failure(
-        e.response?.data?["message"] ??
-            "File upload failed: ${e.message ?? "Unknown error"}",
+        errorParser?.call(e.response?.data) ?? "Unkown Error",
         dioError: e,
         statusCode: statusCode,
       );
