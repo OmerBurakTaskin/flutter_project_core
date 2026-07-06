@@ -1,4 +1,5 @@
 export 'config/index.dart';
+export 'crash/index.dart';
 export 'data/index.dart';
 export 'extensions/index.dart';
 export 'models/index.dart';
