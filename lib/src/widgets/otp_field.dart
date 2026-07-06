@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_project_core/src/extensions/context_extensions.dart';
 import 'package:flutter_project_core/src/theme/app_text_styles.dart';
+
 class OtpField extends StatefulWidget {
-  const OtpField({
-    super.key,
-    required this.onCompleted,
-    this.length = 6,
-    this.spacing = 8.0,
-    this.fieldWidth = 50.0,
-    this.fieldHeight = 60.0,
-    this.borderRadius = 12.0,
-    this.onChanged,
-  });
+  const OtpField(
+      {super.key,
+      required this.onCompleted,
+      this.length = 6,
+      this.spacing = 8.0,
+      this.fieldWidth = 50.0,
+      this.fieldHeight = 60.0,
+      this.borderRadius = 12.0,
+      this.onChanged,
+      this.obscure = false});
 
   final Function(String) onCompleted;
   final Function(String)? onChanged;
@@ -21,6 +22,7 @@ class OtpField extends StatefulWidget {
   final double fieldWidth;
   final double fieldHeight;
   final double borderRadius;
+  final bool obscure;
 
   @override
   State<OtpField> createState() => _OtpFieldState();
@@ -104,6 +106,7 @@ class _OtpFieldState extends State<OtpField> {
                 focusNode: _focusNodes[index],
                 keyboardType: TextInputType.number,
                 textAlign: TextAlign.center,
+                obscureText: widget.obscure,
                 maxLength: 1,
                 style: TextStyles.semiBold20.copyWith(
                   color: context.colorScheme.onSurface,
