@@ -61,6 +61,9 @@ sealed class AppException implements Exception {
       'path': error.requestOptions.path,
     };
 
+    // A non-exhaustive switch (with `default`) is used deliberately so this
+    // compiles across dio versions that add new [DioExceptionType] values
+    // (e.g. `transformTimeout` in dio 5.10+) without needing to name them.
     switch (error.type) {
       case DioExceptionType.connectionError:
         return NoConnectionException(cause: error, stackTrace: st, context: ctx);
@@ -72,12 +75,11 @@ sealed class AppException implements Exception {
           stackTrace: st,
           context: ctx,
         );
-      case DioExceptionType.badCertificate:
-      case DioExceptionType.cancel:
-      case DioExceptionType.unknown:
-        return UnknownException(cause: error, stackTrace: st, context: ctx);
       case DioExceptionType.badResponse:
         return _fromStatusCode(error, st, ctx);
+      default:
+        // cancel, badCertificate, unknown, and any newer transport-level types.
+        return UnknownException(cause: error, stackTrace: st, context: ctx);
     }
   }
 
