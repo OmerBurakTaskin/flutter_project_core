@@ -114,6 +114,7 @@ class _OtpFieldState extends State<OtpField> {
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 decoration: InputDecoration(
                   counterText: "",
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 4, vertical: 12),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(widget.borderRadius),
                     borderSide: BorderSide(color: context.colorScheme.outline),
