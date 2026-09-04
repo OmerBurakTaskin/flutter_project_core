@@ -3,21 +3,22 @@ import 'package:flutter_project_core/src/extensions/context_extensions.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CustomScaffold extends StatelessWidget {
-  const CustomScaffold({
-    super.key,
-    required this.body,
-    this.horizontalPadding = 0,
-    this.verticalPadding = 0,
-    this.isScrollable = false,
-    this.resizeToAvoidBottomInset = false,
-    this.backgroundColor,
-    this.provider,
-    this.isCentered,
-    this.appBar,
-    this.bottomNavigationBar,
-    this.floatingActionButton,
-    this.floatingActionButtonLocation,
-  });
+  const CustomScaffold(
+      {super.key,
+      required this.body,
+      this.horizontalPadding = 0,
+      this.verticalPadding = 0,
+      this.isScrollable = false,
+      this.resizeToAvoidBottomInset = false,
+      this.backgroundColor,
+      this.provider,
+      this.isCentered,
+      this.appBar,
+      this.bottomNavigationBar,
+      this.floatingActionButton,
+      this.floatingActionButtonLocation,
+      this.safeBottom = true,
+      this.safeTop = true});
 
   final Widget body;
   final StateNotifierProvider? provider;
@@ -35,6 +36,9 @@ class CustomScaffold extends StatelessWidget {
   final FloatingActionButtonLocation? floatingActionButtonLocation;
   final Widget? floatingActionButton;
 
+  final bool safeTop;
+  final bool safeBottom;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +54,8 @@ class CustomScaffold extends StatelessWidget {
 
   Widget _buildContentContainer(BuildContext context) {
     return SafeArea(
+      bottom: safeBottom,
+      top: safeTop,
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: horizontalPadding,
