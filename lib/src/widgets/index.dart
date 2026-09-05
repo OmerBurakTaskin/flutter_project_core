@@ -3,6 +3,7 @@ export 'phone_field/index.dart';
 
 export 'custom_button.dart';
 export 'custom_circle_avatar.dart';
+export 'custom_future_builder.dart';
 export 'custom_network_image.dart';
 export 'custom_scaffold.dart';
 export 'custom_textfield.dart';

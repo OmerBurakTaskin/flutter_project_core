@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_project_core/axii_core.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -25,6 +26,7 @@ class CustomTextField extends StatefulWidget {
     this.isEnabled = true,
     this.readOnly = false,
     this.autovalidateMode = AutovalidateMode.onUserInteraction,
+    this.inputFormatters,
   });
   final TextEditingController controller;
   final String? label;
@@ -47,6 +49,7 @@ class CustomTextField extends StatefulWidget {
   final Function(bool?)? afterValidation;
   final Function()? onTap;
   final bool readOnly;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -74,6 +77,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           autovalidateMode: widget.autovalidateMode,
           onChanged: widget.onChanged,
           keyboardType: widget.keyboardType,
+          inputFormatters: widget.inputFormatters,
           minLines: widget.minLines,
           obscureText: _obscureText,
           textInputAction: widget.textInputAction,

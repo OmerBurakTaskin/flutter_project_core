@@ -3,6 +3,7 @@ export 'crash/index.dart';
 export 'data/index.dart';
 export 'extensions/index.dart';
 export 'models/index.dart';
+export 'routing/index.dart';
 export 'theme/index.dart';
 export 'utils/index.dart';
 export 'widgets/index.dart';
